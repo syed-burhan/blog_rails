@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+	caches_page :new
+	caches_action :index		#, expires_in: 1.hour
+
 	before_action :find_post, only: [:show, :update, :edit, :destroy]
   
 	def index
@@ -13,6 +16,8 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 
 		if @post.save
+			# Expire the Cache Manually
+			expire_action(controller: 'posts', action: 'index')
 			redirect_to @post
 		else
 			render 'new'
@@ -25,6 +30,7 @@ class PostsController < ApplicationController
 	def update
 
 		if @post.update(post_params)
+			expire_action(controller: 'posts', action: 'index')
 			redirect_to @post
 		else
 			render 'edit'
@@ -38,9 +44,9 @@ class PostsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:id])
 		@post.destroy
+		# expire_action(controller: 'posts', action: 'index')
 
 		redirect_to posts_path
-
 	end
 
 	private
