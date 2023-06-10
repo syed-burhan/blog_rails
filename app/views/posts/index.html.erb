@@ -1,6 +1,20 @@
 <% content_for :page_title,  "Index" %>
 
 <div class="section">
+	<!--
+	<div class="field has-addons">
+	<%= form_tag search_posts_path, method: :get, class: "search-form" do %>
+		<div class="field has-addons">
+		  <div class="control">
+			<%= text_field_tag :search_keyword, params[:search_keyword], placeholder: "Search posts", class: "input" %>
+		  </div>
+		  <div class="control">
+			<%= submit_tag "Search", class: "button is-primary" %>
+		  </div>
+		</div>
+	  <% end %>
+	</div>
+	-->
 	<div class="container">
 		<% @posts.each do |post| %>
 			<div class="card">

@@ -48,6 +48,17 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 
+	# def search
+	# 	@search_keyword = params[:search_keyword]
+
+	# 	if @search_keyword.present?
+	# 	  @posts = Post.where("title LIKE ?", "%#{@search_keyword}%")
+	# 	else
+	# 	  @posts = Post.all
+	# 	end
+	# 	@posts = @posts.order("created_at DESC")
+	# end
+
 	private
 
 	def post_params
