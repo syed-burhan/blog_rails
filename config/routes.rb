@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # get '/posts/search', to: 'posts#search', as: 'search_posts'
+  get '/posts/search', to: 'posts#search', as: 'search_posts'
   resources :posts do
   	resources :comments
   end
