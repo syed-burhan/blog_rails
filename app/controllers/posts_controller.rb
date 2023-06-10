@@ -42,7 +42,6 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
 		@post.destroy
 		# expire_action(controller: 'posts', action: 'index')
 
