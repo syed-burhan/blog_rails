@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-	before_action :find_post, only: [:show, :update, :edit, :destroy]
+	before_action :find_post, only: [:update, :edit, :destroy]
   
 	def index
-		@posts = Post.all.order("created_at DESC")
-	end
+    	@posts = Post.cached_all
+  	end
 
 	def new
 		@post = Post.new
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@post = Post.cached_find(params[:id])
 	end
 
 	def update

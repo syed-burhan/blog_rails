@@ -29,8 +29,8 @@
 
 <section class="section comments">
 	<div class="container">
-		<h2 class="subtitle is-5"><strong><%= @post.comments.count %></strong> Comments</h2>
-		<%= render @post.comments %>
+		<h2 class="subtitle is-5"><strong><%= @post.cached_comments_count %></strong> Comments</h2>
+		<%= render @post.cached_comments %>
 		<div class="comment-form">
 			<hr />
 			<p class="subtitle is-6">Add a Comment</p>
